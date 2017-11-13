@@ -150,4 +150,143 @@ things that are very far apart are very unlike each other.
 So we wanna learn this information simply from the data.
 From the raw data and some model assumption that we have to make.
 
+## Data Modelling
+
+Everything that we are going to discuss in this course
+can in some way boil down to what's the flow chart that's contained on this slide.
+So we have four components here.
+We have the data, which I'm calling block one.
+We have a model for the data which I'm calling block two.
+We then have some sort of an inference algorithm, block three.
+And we have a task or some goal that we want to do like predicting or
+exploring the data which I'll call block four.
+And they all fall into, all the algorithms or
+techniques, the motivations have this same sort of flow.
+So we have a data set, we start with that.
+We have a goal, what we want to do with this data set.
+We have this here.
+We then have to define some sort of a model that's going to get us to our goal.
+This part here, we have to define a model for the data that's going to do for us
+what we wanted to do like make predictions or find the structure in the data.
+But this model is going to have unknown parameters to it and
+we need to learn these parameters.
+And so that's where block three the inference portion comes into play.
+So we basically say here's a model with some unknown parameters.
+Here's a dataset that we're going to say that we want to model with this model.
+Now tell me,
+what are the parameters I should set the model to in order to model it well?
+That's block three.
+And when we learn those parameters we can then take new data and make predictions or
+explore the data set.
+
+![capture 3](./img/capture3.png)
+
+So for example, the difference between supervised versus unsupervised learning,
+can be thought of as comparing as block one and block four.
+I'm thinking of block one and block four.
+So what is the data and what do we want to do?
+If we have data where we want to predict the output for an input by learning
+some function that maps inputs to outputs, then we're doing supervised learnings.
+So that's what block one and block four will tell us to do.
+If we want to simply learn the structure underlying our
+data set with some sort of a model.
+For example, we have documents and we want to learn the topics of those documents to
+explore the data set, we might want to do an unsupervised learning model.
+And so unsupervised versus supervised can be thought of as what block one and
+block four is telling us and then block two and
+block three are the set of techniques that we perform toward that end.
+
+If we think probabilistic verses non-probabilistic models we're now not
+really thinking about the data or what we want to do with the data.
+We're thinking about the model itself primarily.
+So we're defining a model that uses probability distributions in
+the probabilistic case.
+Or we're defining a model where the probability distributions really don't
+come into play at all in the no probabilistic case.
+And also to a certain extent the probabilistic versus
+non-probabilistic dichotomy appears in block three as well.
+In that some algorithmic techniques are purely motivated by fact that we
+are doing a probabilistic model.
+However, a lot of techniques for non-probabilistic models
+apply equally as well to probabilistic models with no modifications at all.
+So to some extent, block three is shared across the two, and
+the difference between probabilistic and non-probabilistic modeling is
+primarily in the types of models that we're going to define.
+
+### Gaussian Distribution (Multivariate)
+
+**Block 1**:
+We assume that we have data points x1 through xn.
+We have n observations, and each observation is a d
+dimensional vector that can take any value.
+So this is the data that we're dealing with.
+There's no other data that we have that we would want to model, we have a data set
+of n three dimensional vectors and we want to model those vectors.
+We believe those vectors can take any value.
+
+**Block 2**:
+Block 2 then is the model that we wanted to find.
+So we have this data, now what do we wanna do with it?
+How do we wanna model it I should say.
+So for this problem, what we're going to think of, and
+I'll return to these in more detail in the rest of the lecture,
+we're going to say that we're gonna model this data with.
+A Gaussian distribution, a multivariate Gaussian probability distribution.
+And we're going to say that the n datapoints are IID, independent and
+identically distributed according to this distribution.
+So we'll return to that in a few moments but that's block 2.
+We've now defined a model for the data.
+We've said this is the structure that we wanna learn from the data because this
+is a probability distribution, so we're looking at this problem probabilistically.
+We now get to add the intuition that we're saying this is how the data was generated.
+We have a probability model, that's saying the data was generated in this way.
+Okay, so we have the data, we've defined the model for the data.
+
+**Block 3**:
+Now we have to transition the block 3 and learn the parameters of the model.
+So, a Gaussian has parameters, we'll discuss it since it's on the slide.
+We have the data that we say came from this Gaussian.
+How do we now fix or
+tune the parameters to this Gaussian in a way to explain the data?
+And so this is going to lead to a problem of having to define
+some sort of an objective function.
+And then defining a way for optimizing that objective function.
+And so what we'll discuss in the rest of this lecture is something called
+maximum likelihood.
+
+**Block 4**:
+And block four we can leave undefined for
+now, we don't need to Say what we want to do with this data.
+We don't need to say why it is that we wanna learn a model for the data.
+It could simply be that we just want to reduce the data so
+that we can have a compact representation of it and
+then throw the data away, or many other reasons.
+
+___
+
+Okay so, looking at block two,
+we're going to define a multivariate Gaussian distribution.
+So to refresh our memories, when we define a probability
+distribution we're saying that the probability of x or the density of x
+Given parameters mu and sigma, is equal to some function.
+That function has to be non negative everywhere.
+So it's a function of x as well as mu and sigma.
+It has to be non negative everywhere and it has to integrate to one.
+
+And the multi variate Gaussian has this Specific form where we take the input
+vector, so this is a d dimensional vector, we subtract off it's mean,
+we perform this quadratic function using a mean vector mu, that's d dimensional.
+And D by D matrix sigma, that's positive definite.
+We evaluate this function, and that gives us a density for
+a particular point x, using a galcene with mean mu and covariant sigma.
+So we get something that looks like this.
+If d is 2, so we have a 2-dimensional vector x,
+we're evaluating this function p in a 2-dimensional space.
+This 3rd dimension is then the value of the function at a particular location.
+So would assume, looking at this function, that the mean is somewhere around (0,0).
+And the covariance defines this sort of a shape.
+So a point in this region will have very tiny density, very small density.
+So we won't expect to see much data in this region.
+Whereas in this hump region we have large density,
+meaning most of the data is gonna come from this region.
 
