@@ -215,6 +215,9 @@ primarily in the types of models that we're going to define.
 
 ### Gaussian Distribution (Multivariate)
 
+![capture 4](./img/capture4.png)
+
+
 **Block 1**:
 We assume that we have data points x1 through xn.
 We have n observations, and each observation is a d
@@ -289,4 +292,6 @@ So a point in this region will have very tiny density, very small density.
 So we won't expect to see much data in this region.
 Whereas in this hump region we have large density,
 meaning most of the data is gonna come from this region.
+
+
 
