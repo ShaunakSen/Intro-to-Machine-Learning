@@ -119,7 +119,7 @@ And honestly we don't necessarily even care how it's mapped.
 We simply want to say here's my input, what should I map It to as an output.
 And we measure the performance based purely on how well it does that task.
 
-this sort of an input output mapping.
+This is sort of an input output mapping.
 We want to perform more abstract or
 vague tasks such as understanding what is the information in our data set.
 For example, we don't have an infinite amount of time to read so
@@ -293,5 +293,63 @@ So we won't expect to see much data in this region.
 Whereas in this hump region we have large density,
 meaning most of the data is gonna come from this region.
 
+
+## Block 2: A Probabilistic Model
+
+Again, in this case we're defining a probabilistic model.
+So we're thinking probabilistically here.
+So what a probabilistic model is
+is simply a set of probability distributions on our data.
+
+So we have data x.
+We have to define some probability distribution on x.
+That distribution is going to take parameters theta, which we don't know.
+
+![capture 5](./img/capture5.png)
+
+
+So by this definition, we haven't actually defined the final distribution,
+we've defined a distribution family.
+Meaning, this probability distribution can take many different values for theta.
+And no matter what value we set theta to,
+we're always working within the same distribution family.
+So in the case of the Gaussian distribution that we've been thinking of,
+this density, p of x given theta, is a multivariate Gaussian.
+That's the distribution family, a multivariate Gaussian.
+And it takes parameters mu and sigma, mean and covariance.
+And for all values of mu and sigma we're always working with the same density,
+the same multivariate Gaussian, the same distribution family.
+
+So we've defined this model, we've defined the distribution family.
+We've also made an assumption, an IID assumption.
+What IID stands for is Independent and Identically Distributed.
+And so this is a very common assumption that makes working with data much easier.
+
+What this means is that, intuitively, it means that every single data point is
+simply independent from every other and it has the same distribution family.
+So if we have n multivariate Gaussians,
+we assume that every single one of those n vectors in our data set was generated
+from a multivariate Gaussian using exactly the same mean and covariance parameter.
+And they were generated without reference to what any of the other values were.
+It was essentially a brand new experiment for each of the n vectors that we obtain.
+
+You can also think of this in coin flipping terms,
+where if we flip a coin where the coin has a 0.5 probability of heads, 0.5 of tails.
+The density, or the distribution in this case, not density that we're working with,
+is a binomial distribution with parameter 0.5.
+So that's the distribution and the independent and
+identically distributed comes into play by saying that every coin
+that we flip has the same distribution of heads versus tails.
+And they're all flipped completely separate of each other.
+They don't influence each other in any way.
+
+So we have a probability of n data points, n d-dimensional vectors,
+coming from a distribution with parameter theta.
+And we can say that that joint density, the joint probability of all n of these
+observations is simply the product of the probability of each of them individually.
+So again, if these weren't independent, if these x values were not
+independent of each other, we could not write it as this product form.
+
+![capture 6](./img/capture6.png)
 
 
